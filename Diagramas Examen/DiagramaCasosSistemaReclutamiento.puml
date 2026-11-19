@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+actor "Aspirante" as Aspirante
+actor "Reclutador" as Reclutador
+actor "Servicio de Correo\nExterno (API)" as Correo
+rectangle "Sistema de Reclutamiento y Control de Aspirantes" {
+    usecase "Registrarse" as UC1
+    usecase "Gestionar perfil" as UC2
+    usecase "Cargar CV" as UC3
+    usecase "Buscar ofertas de empleo" as UC4
+    usecase "Postularse a vacante" as UC5
+    usecase "Consultar estado\nde postulación" as UC6
+    usecase "Gestionar vacantes" as UC7
+    usecase "Dar de alta vacante" as UC7a
+    usecase "Modificar vacante" as UC7b
+    usecase "Dar de baja vacante" as UC7c
+    usecase "Evaluar postulaciones" as UC8
+    usecase "Agendar entrevista" as UC9
+    usecase "Registrar calificación\ny comentarios" as UC10
+    usecase "Actualizar estado\nde postulación" as UC11
+    usecase "Enviar notificación" as UC12
+}
+Aspirante --> UC1
+Aspirante --> UC2
+Aspirante --> UC3
+Aspirante --> UC4
+Aspirante --> UC5
+Aspirante --> UC6
+Reclutador --> UC7
+Reclutador --> UC8
+Reclutador --> UC9
+Reclutador --> UC10
+Reclutador --> UC11
+UC7 .> UC7a : <<include>>
+UC7 .> UC7b : <<include>>
+UC7 .> UC7c : <<include>>
+UC11 .> UC12 : <<include>>
+Correo --> UC12
+@enduml

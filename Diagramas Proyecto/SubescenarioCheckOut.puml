@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor "Huésped" as H
+rectangle "Registrar Check-out" {
+    usecase "Registrar check-out" as Principal
+    usecase "Buscar reservación" as U1
+    usecase "Verificar estancia" as U2
+    usecase "Confirmar check-out" as U3
+    usecase "Finalizar reservación" as U4
+}
+actor "Recepcionista" as R
+H --> Principal
+Principal <-- R
+Principal ..> U1 : <<include>>
+Principal ..> U2 : <<include>>
+Principal ..> U3 : <<include>>
+Principal ..> U4 : <<include>>
+@enduml

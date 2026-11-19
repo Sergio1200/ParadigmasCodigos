@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+actor "Huésped" as H
+rectangle "Sistema de Gestión de Reservaciones de Hotel" {
+    usecase "Consultar disponibilidad" as UC1
+    usecase "Realizar reservación" as UC2
+    usecase "Modificar reservación" as UC3
+    usecase "Cancelar reservación" as UC4
+    usecase "Registrar pago" as UC5
+    usecase "Registrar check-in" as UC6
+    usecase "Registrar check-out" as UC7
+    usecase "Consultar reservaciones" as UC8
+    usecase "Administrar habitaciones" as UC9
+}
+actor "Recepcionista" as R
+actor "Administrador" as A
+H --> UC1
+H --> UC2
+H --> UC3
+H --> UC4
+H --> UC5
+UC1 <-- R
+UC2 <-- R
+UC3 <-- R
+UC4 <-- R
+UC5 <-- R
+UC6 <-- R
+UC7 <-- R
+UC8 <-- R
+UC9 <-- A
+@enduml
+

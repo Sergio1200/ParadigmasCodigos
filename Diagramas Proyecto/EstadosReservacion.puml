@@ -1,0 +1,10 @@
+@startuml
+[*] --> Pendiente
+Pendiente --> Confirmada : confirmar reservación
+Pendiente --> Cancelada : cancelar
+Confirmada --> EnCurso : realizar check-in
+Confirmada --> Cancelada : cancelar
+EnCurso --> Finalizada : realizar check-out
+Cancelada --> [*]
+Finalizada --> [*]
+@enduml

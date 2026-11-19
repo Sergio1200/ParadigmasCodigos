@@ -1,0 +1,65 @@
+@startuml
+' Configuración visual para diagrama ER
+hide circle
+skinparam linetype ortho
+skinparam EntityBackgroundColor #ebf5fb
+skinparam EntityBorderColor #2980b9
+
+' --- TABLAS ---
+
+entity "Persona" as persona {
+  * IdPersona : int <<PK>>
+  --
+  Nombre : varchar(50)
+  Apellido_paterno : varchar(50)
+  Apellido_materno : varchar(50)
+  fecha_de_nacimiento : date
+  email : varchar(100)
+}
+
+entity "Espacio_Academico" as espacio {
+  * idEspacioAcademico : int <<PK>>
+  --
+  Nombre_EspacioAcademico : varchar(100)
+}
+
+entity "Alumno" as alumno {
+  * idAlumno : int <<PK>>
+  --
+  matricula : varchar(50)
+  carrera : varchar(50)
+  grupo : varchar(50)
+  semestre : varchar(50)
+  idEspacioAcademico : int <<FK>>
+}
+
+entity "Profesor" as profesor {
+  * idProfesor : int <<PK>>
+  --
+  NumeroEmpleado_doc : varchar(50)
+  horas_Trabajo : varchar(50)
+  idEspacioAcademico : int <<FK>>
+}
+
+entity "Administrativo" as administrativo {
+  * idAdministrativo : int <<PK>>
+  --
+  NumeroEmpleado_Admin : varchar(50)
+  Area : varchar(80)
+  cargo : varchar(50)
+  idEspacioAcademico : int <<FK>>
+}
+
+' --- RELACIONES ---
+
+' Relaciones de Herencia (Superclase a Subclases)
+persona <|-- alumno
+persona <|-- profesor
+persona <|-- administrativo
+
+' Relaciones con Espacio Académico (1 a muchos)
+espacio ||--o{ alumno 
+espacio ||--o{ profesor 
+espacio ||--o{ administrativo 
+
+@enduml

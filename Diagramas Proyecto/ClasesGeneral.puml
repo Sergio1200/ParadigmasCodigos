@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+
+package "Usuarios" as Usuarios
+package "Reservaciones" as Reservaciones
+package "Habitaciones" as Habitaciones
+package "Pagos" as Pagos
+
+Usuarios --> Reservaciones : realiza / gestiona
+Reservaciones --> Habitaciones : utiliza
+Reservaciones --> Pagos : genera
+
+@enduml

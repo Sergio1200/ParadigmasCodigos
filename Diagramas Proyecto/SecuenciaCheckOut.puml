@@ -1,0 +1,14 @@
+@startuml
+actor "Huésped" as H
+participant "Recepcionista" as R
+participant "Reservación" as RE
+participant "Habitación" as HA
+H -> R : Solicitar check-out
+R -> RE : Buscar reservación
+RE --> R : Datos de estancia
+R -> RE : Registrar check-out
+RE -> RE : Cambiar estado a Finalizada
+R -> HA : Actualizar habitación
+HA -> HA : Estado = Disponible
+R --> H : Confirmar salida
+@enduml

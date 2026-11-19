@@ -1,0 +1,21 @@
+@startuml Colaboracion
+
+skinparam roundcorner 0
+skinparam shadowing false
+
+object "Huésped" as H
+object "Recepcionista" as R
+object "Habitación" as HA
+object "Reservación" as RE
+
+H -right-> R : 1: Solicitar reservación
+
+R -down-> HA : 2: Consultar disponibilidad
+HA -up-> R : 3: Disponible
+
+R -right-> RE : 4: Crear reservación
+RE -left-> R : 5: Confirmada
+
+R -left-> H : 6: Confirmación
+
+@enduml

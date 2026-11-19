@@ -1,0 +1,9 @@
+@startuml
+actor "Administrador" as A
+participant "Habitación" as H
+A -> H : Consultar habitación
+H --> A : Mostrar información
+A -> H : Modificar datos
+H -> H : Guardar cambios
+H --> A : Confirmar actualización
+@enduml

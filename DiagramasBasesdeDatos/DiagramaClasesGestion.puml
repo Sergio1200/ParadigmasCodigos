@@ -1,0 +1,117 @@
+@startuml
+
+title Sistema de Gestión Escolar - Diagrama de Clases
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+
+skinparam class {
+    BackgroundColor #F2F2F2
+    BorderColor #555555
+    ArrowColor #555555
+    FontColor #222222
+}
+
+class EspacioAcademico {
+    -idEspacio : int
+    -nombre : String
+    --
+    +registrarEspacio()
+    +actualizarEspacio()
+}
+
+class Carrera {
+    -idCarrera : int
+    -nombre : String
+    --
+    +registrarCarrera()
+    +actualizarCarrera()
+    +obtenerMaterias()
+    +obtenerGrupos()
+}
+
+class Grupo {
+    -idGrupo : int
+    -nombre : String
+    -semestre : int
+    --
+    +registrarGrupo()
+    +actualizarGrupo()
+    +obtenerAlumnos()
+}
+
+class Alumno {
+    -idAlumno : int
+    -nombre : String
+    -apellidoPaterno : String
+    -apellidoMaterno : String
+    -fechaNacimiento : Date
+    --
+    +registrar()
+    +actualizar()
+    +eliminar()
+    +buscar()
+}
+
+class Docente {
+    -idDocente : int
+    -numeroEmpleado : String
+    -nombre : String
+    -apellidoPaterno : String
+    -apellidoMaterno : String
+    --
+    +registrar()
+    +actualizar()
+    +eliminar()
+    +buscar()
+}
+
+class Materia {
+    -idMateria : int
+    -nombre : String
+    --
+    +registrarMateria()
+    +actualizarMateria()
+    +consultar()
+}
+
+class Clase {
+    -idClase : int
+    --
+    +asignarDocente()
+    +asignarMateria()
+    +asignarGrupo()
+    +obtenerAlumnos()
+}
+
+' ==========================
+' RELACIONES
+' ==========================
+
+EspacioAcademico --> Carrera : contiene
+
+Carrera --> Grupo : tiene
+
+Carrera --> Materia : ofrece
+
+Grupo --> Alumno : contiene
+
+Docente --> Clase : imparte
+
+Materia --> Clase : corresponde
+
+Grupo --> Clase : recibe
+
+Alumno --> Clase : cursa
+
+' ==========================
+' AJUSTES DE POSICIÓN
+' ==========================
+
+EspacioAcademico -[hidden]-> Docente
+Carrera -[hidden]-> Materia
+Alumno -[hidden]-> Clase
+
+@enduml

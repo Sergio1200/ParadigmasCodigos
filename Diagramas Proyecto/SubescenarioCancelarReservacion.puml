@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor "Huésped" as H
+rectangle "Cancelar Reservación" {
+    usecase "Cancelar reservación" as Principal
+    usecase "Buscar reservación" as U1
+    usecase "Verificar estado" as U2
+    usecase "Confirmar cancelación" as U3
+    usecase "Informar que no\npuede cancelarse" as U4
+}
+actor "Recepcionista" as R
+H --> Principal
+Principal <-- R
+Principal ..> U1 : <<include>>
+Principal ..> U2 : <<include>>
+U3 ..> Principal : <<extend>>\n[Cancelación permitida]
+U4 ..> Principal : <<extend>>\n[Cancelación no permitida]
+@enduml

@@ -1,0 +1,17 @@
+@startuml Estado
+
+[*] --> Pendiente
+
+Pendiente --> Confirmada : confirmar
+
+Pendiente --> Cancelada : cancelar
+
+Confirmada --> EnCurso : check-in
+
+EnCurso --> Finalizada : check-out
+
+Cancelada --> [*]
+
+Finalizada --> [*]
+
+@enduml

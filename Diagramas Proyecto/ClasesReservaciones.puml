@@ -1,0 +1,28 @@
+@startuml
+package "Reservaciones" {
+    class Reservacion {
+        - idReservacion : int
+        - fechaEntrada : Date
+        - fechaSalida : Date
+        - numeroHuespedes : int
+        - costoTotal : double
+        - estado : String
+        --
+        + crearReservacion() : void
+        + modificarReservacion() : void
+        + cancelarReservacion() : void
+        + calcularCosto() : double
+        + confirmarReservacion() : void
+    }
+}
+class Huesped {
+    - idHuesped : int
+    - nombre : String
+}
+class Habitacion {
+    - numero : int
+    - estado : String
+}
+Huesped "1" -- "0..*" Reservacion : realiza
+Reservacion "0..*" --> "1" Habitacion : asigna
+@enduml

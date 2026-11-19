@@ -1,0 +1,7 @@
+@startuml
+[*] --> Disponible
+Disponible --> Reservada : confirmar reservación
+Reservada --> Ocupada : realizar check-in
+Reservada --> Disponible : cancelar reservación
+Ocupada --> Disponible : realizar check-out
+@enduml

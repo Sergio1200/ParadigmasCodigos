@@ -1,0 +1,30 @@
+@startuml CasosUso
+left to right direction
+
+actor "Huésped" as H
+
+rectangle "Sistema de Reservaciones de Hotel" {
+    usecase "Realizar Reservación" as UC1
+    usecase "Cancelar Reservación" as UC2
+    usecase "Consultar Disponibilidad" as UC3
+    usecase "Registrar Check-in" as UC4
+    usecase "Registrar Check-out" as UC5
+    usecase "Administrar Habitaciones" as UC6
+}
+
+actor "Recepcionista" as R
+actor "Administrador" as A
+
+H --> UC1
+H --> UC2
+H --> UC3
+
+UC1 --> R
+UC2 --> R
+UC3 --> R
+UC4 --> R
+UC5 --> R
+
+UC6 --> A
+
+@enduml

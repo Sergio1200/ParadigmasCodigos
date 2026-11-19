@@ -1,0 +1,11 @@
+@startuml
+actor "Recepcionista" as R
+participant "Reservación" as RE
+R -> RE : Ingresar criterio de búsqueda
+RE -> RE : Buscar reservación
+alt Reservación encontrada
+    RE --> R : Mostrar datos
+else No encontrada
+    RE --> R : Informar que no existe
+end
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+package "Usuarios" {
+    class Huesped {
+        - idHuesped : int
+        - nombre : String
+        - telefono : String
+        - correo : String
+        --
+        + registrarDatos() : void
+        + actualizarDatos() : void
+    }
+    class Empleado {
+        - idEmpleado : int
+        - nombre : String
+        - usuario : String
+        --
+        + iniciarSesion() : boolean
+    }
+    class Recepcionista {
+        + gestionarReservacion() : void
+        + registrarCheckIn() : void
+        + registrarCheckOut() : void
+    }
+    class Administrador {
+        + registrarHabitacion() : void
+        + modificarHabitacion() : void
+    }
+    Empleado <|-- Recepcionista
+    Empleado <|-- Administrador
+}
+@enduml

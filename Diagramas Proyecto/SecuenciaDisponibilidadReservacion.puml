@@ -1,0 +1,17 @@
+@startuml
+actor "Huésped" as H
+participant "Recepcionista" as R
+participant "Habitación" as HA
+participant "Reservación" as RE
+H -> R : Solicitar reservación
+R -> HA : Consultar disponibilidad
+HA --> R : Estado de habitación
+alt Habitación disponible
+    R -> RE : Crear reservación
+    RE -> RE : Calcular costo
+    RE --> R : Reservación confirmada
+    R --> H : Mostrar confirmación
+else No disponible
+    R --> H : Informar que no hay disponibilidad
+end
+@enduml

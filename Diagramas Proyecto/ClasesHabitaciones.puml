@@ -1,0 +1,23 @@
+@startuml
+package "Habitaciones" {
+    class Habitacion {
+        - numero : int
+        - piso : int
+        - estado : String
+        - precioPorNoche : double
+        --
+        + consultarDisponibilidad() : boolean
+        + cambiarEstado() : void
+        + obtenerPrecio() : double
+    }
+    class TipoHabitacion {
+        - idTipo : int
+        - nombre : String
+        - capacidad : int
+        - descripcion : String
+        --
+        + obtenerTipo() : String
+    }
+    TipoHabitacion "1" -- "1..*" Habitacion : clasifica
+}
+@enduml

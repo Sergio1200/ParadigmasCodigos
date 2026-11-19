@@ -1,0 +1,34 @@
+
+@startuml
+title Student Registration System - MVC
+
+actor User
+participant "StudentView\n(View)" as View
+participant "StudentController\n(Controller)" as Controller
+participant "Student\n(Model)" as Model
+
+User -> View: Enter student ID and name
+User -> View: Click "Register Student"
+
+View -> Controller: Button click event
+activate Controller
+
+Controller -> View: getStudentId()
+View --> Controller: Student ID
+
+Controller -> View: getStudentName()
+View --> Controller: Student name
+
+Controller -> Model: setStudent(id, name)
+activate Model
+Model --> Controller: Data stored
+deactivate Model
+
+Controller -> Model: getId() / getName()
+Model --> Controller: Student information
+
+Controller -> View: showResult(id + " - " + name)
+View --> User: Display registered student
+
+deactivate Controller
+@enduml

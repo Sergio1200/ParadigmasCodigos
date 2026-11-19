@@ -1,0 +1,85 @@
+@startuml
+left to right direction
+package "Usuarios" {
+    class Huesped {
+        - idHuesped : int
+        - nombre : String
+        - telefono : String
+        - correo : String
+        --
+        + registrarDatos() : void
+        + actualizarDatos() : void
+    }
+    class Empleado {
+        - idEmpleado : int
+        - nombre : String
+        - usuario : String
+        --
+        + iniciarSesion() : boolean
+    }
+    class Recepcionista {
+        + gestionarReservacion() : void
+        + registrarCheckIn() : void
+        + registrarCheckOut() : void
+    }
+    class Administrador {
+        + registrarHabitacion() : void
+        + modificarHabitacion() : void
+    }
+    Empleado <|-- Recepcionista
+    Empleado <|-- Administrador
+}
+package "Reservaciones" {
+    class Reservacion {
+        - idReservacion : int
+        - fechaEntrada : Date
+        - fechaSalida : Date
+        - numeroHuespedes : int
+        - costoTotal : double
+        - estado : String
+        --
+        + crearReservacion() : void
+        + modificarReservacion() : void
+        + cancelarReservacion() : void
+        + calcularCosto() : double
+        + confirmarReservacion() : void
+    }
+}
+package "Habitaciones" {
+    class Habitacion {
+        - numero : int
+        - piso : int
+        - estado : String
+        - precioPorNoche : double
+        --
+        + consultarDisponibilidad() : boolean
+        + cambiarEstado() : void
+    }
+    class TipoHabitacion {
+        - idTipo : int
+        - nombre : String
+        - capacidad : int
+        - descripcion : String
+        --
+        + obtenerTipo() : String
+    }
+    TipoHabitacion "1" -- "1..*" Habitacion : clasifica
+}
+package "Pagos" {
+    class Pago {
+        - idPago : int
+        - fecha : Date
+        - monto : double
+        - metodoPago : String
+        - estado : String
+        --
+        + registrarPago() : void
+        + validarPago() : boolean
+    }
+}
+Huesped "1" -- "0..*" Reservacion : realiza
+Reservacion "0..*" --> "1" Habitacion : asigna
+Reservacion "1" -- "0..*" Pago : tiene
+Recepcionista ..> Reservacion : gestiona
+Administrador ..> Habitacion : administra
+@enduml

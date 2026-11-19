@@ -1,0 +1,8 @@
+@startuml
+[*] --> Pendiente
+Pendiente --> Procesando : registrar pago
+Procesando --> Pagado : pago aprobado
+Procesando --> Rechazado : pago rechazado
+Rechazado --> Procesando : intentar nuevamente
+Pagado --> [*]
+@enduml

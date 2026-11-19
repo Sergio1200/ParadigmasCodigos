@@ -1,0 +1,32 @@
+@startuml Secuencia
+
+participant "Huésped" as H
+participant "Recepcionista" as R
+participant "Habitación" as HA
+participant "Reservación" as RE
+
+H --> R : 1. Solicitar reservación
+
+activate R
+
+R --> HA : 2. Consultar disponibilidad
+
+activate HA
+HA --> R : 3. Estado de habitación
+deactivate HA
+
+alt Disponible
+
+    R --> RE : 4. Crear reservación
+    RE --> R : 5. Reservación confirmada
+    R --> H : 6. Confirmación
+
+else No disponible
+
+    R --> H : Reservación rechazada
+
+end
+
+deactivate R
+
+@enduml

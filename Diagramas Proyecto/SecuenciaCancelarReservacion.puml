@@ -1,0 +1,15 @@
+@startuml
+actor "Huésped" as H
+participant "Recepcionista" as R
+participant "Reservación" as RE
+H -> R : Solicitar cancelación
+R -> RE : Buscar reservación
+RE --> R : Estado de reservación
+alt Cancelación permitida
+    R -> RE : Cancelar reservación
+    RE --> R : Reservación cancelada
+    R --> H : Confirmar cancelación
+else No permitida
+    R --> H : Informar que no puede cancelarse
+end
+@enduml

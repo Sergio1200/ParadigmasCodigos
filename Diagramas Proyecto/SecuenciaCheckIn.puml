@@ -1,0 +1,18 @@
+@startuml
+actor "Huésped" as H
+participant "Recepcionista" as R
+participant "Reservación" as RE
+participant "Habitación" as HA
+H -> R : Solicitar check-in
+R -> RE : Buscar reservación
+RE --> R : Estado de reservación
+alt Reservación válida
+    R -> RE : Registrar check-in
+    RE -> RE : Cambiar estado a En curso
+    R -> HA : Cambiar estado
+    HA -> HA : Estado = Ocupada
+    R --> H : Confirmar check-in
+else Reservación inválida
+    R --> H : Rechazar check-in
+end
+@enduml

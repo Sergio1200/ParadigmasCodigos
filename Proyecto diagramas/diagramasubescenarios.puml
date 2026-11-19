@@ -1,0 +1,24 @@
+@startuml Subescenarios
+left to right direction
+
+actor "Huésped" as H
+
+rectangle "Sistema" {
+    usecase "Realizar Reservación" as UC1
+    usecase "Consultar Disponibilidad" as UC2
+    usecase "Rechazar Reservación" as UC3
+    usecase "Confirmar Reservación" as UC4
+}
+
+actor "Recepcionista" as R
+
+H --> UC1
+
+UC1 ..> UC2 : <<include>>
+
+UC3 ..> UC1 : <<extend>>\n[No disponible]
+UC4 ..> UC1 : <<extend>>\n[Disponible]
+
+UC1 --> R
+
+@enduml

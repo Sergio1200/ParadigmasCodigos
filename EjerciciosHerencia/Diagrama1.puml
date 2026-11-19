@@ -1,0 +1,8 @@
+@startuml Diagrama1
+class Vehiculo{
+# modelo : String
+}
+class Auto extends Vehiculo{
+
+}
+@enduml

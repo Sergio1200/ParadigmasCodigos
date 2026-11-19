@@ -1,0 +1,18 @@
+@startuml
+actor "Huésped" as H
+participant "Recepcionista" as R
+participant "Reservación" as RE
+participant "Pago" as P
+H -> R : Realizar pago
+R -> RE : Buscar reservación
+RE --> R : Datos y monto pendiente
+R -> P : Registrar pago
+P -> P : Validar pago
+alt Pago válido
+    P --> R : Pago registrado
+    R --> H : Confirmar pago
+else Pago inválido
+    P --> R : Pago rechazado
+    R --> H : Informar error
+end
+@enduml

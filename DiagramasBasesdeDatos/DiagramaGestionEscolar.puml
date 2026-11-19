@@ -1,0 +1,105 @@
+@startuml
+
+title Sistema de Gestión Escolar - Diagrama Relacional
+
+skinparam backgroundColor #F5F8FC
+
+skinparam class {
+    BackgroundColor White
+    BorderColor #1A487F
+    FontColor #10296C
+    ArrowColor #1A487F
+}
+
+class "espacios_academicos" as espacios_academicos {
+    id_espacio : INT <<PK>>
+    --
+    nombre : VARCHAR(100)
+}
+
+class "carreras" as carreras {
+    id_carrera : INT <<PK>>
+    --
+    nombre : VARCHAR(100)
+    id_espacio : INT <<FK>>
+}
+
+class "materias" as materias {
+    id_materia : INT <<PK>>
+    --
+    nombre : VARCHAR(100)
+}
+
+class "carrera_materia" as carrera_materia {
+    id_carrera : INT <<PK, FK>>
+    id_materia : INT <<PK, FK>>
+    --
+    semestre : TINYINT
+}
+
+class "grupos" as grupos {
+    id_grupo : INT <<PK>>
+    --
+    nombre : VARCHAR(20)
+    id_carrera : INT <<FK>>
+    semestre : TINYINT
+}
+
+class "alumnos" as alumnos {
+    id_alumno : INT <<PK>>
+    --
+    nombre : VARCHAR(60)
+    apellido_paterno : VARCHAR(60)
+    apellido_materno : VARCHAR(60)
+    fecha_nacimiento : DATE
+    id_grupo : INT <<FK>>
+}
+
+class "docentes" as docentes {
+    id_docente : INT <<PK>>
+    --
+    numero_empleado : VARCHAR(20)
+    nombre : VARCHAR(60)
+    apellido_paterno : VARCHAR(60)
+    apellido_materno : VARCHAR(60)
+}
+
+class "clases" as clases {
+    id_clase : INT <<PK>>
+    --
+    id_materia : INT <<FK>>
+    id_docente : INT <<FK>>
+    id_grupo : INT <<FK>>
+}
+
+class "alumno_clase" as alumno_clase {
+    id_alumno : INT <<PK, FK>>
+    id_clase : INT <<PK, FK>>
+}
+
+
+' ==========================
+' RELACIONES
+' ==========================
+
+espacios_academicos "1" -- "0..*" carreras : tiene
+
+carreras "1" -- "0..*" grupos : tiene
+
+carreras "1" -- "0..*" carrera_materia : relaciona
+
+materias "1" -- "0..*" carrera_materia : relaciona
+
+grupos "1" -- "0..*" alumnos : contiene
+
+materias "1" -- "0..*" clases : materia
+
+docentes "1" -- "0..*" clases : imparte
+
+grupos "1" -- "0..*" clases : recibe
+
+alumnos "1" -- "0..*" alumno_clase : cursa
+
+clases "1" -- "0..*" alumno_clase : contiene
+
+@enduml

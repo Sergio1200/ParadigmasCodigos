@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+rectangle "Consultar Reservaciones" {
+    usecase "Consultar reservaciones" as Principal
+    usecase "Ingresar criterio\nde búsqueda" as U1
+    usecase "Buscar reservación" as U2
+    usecase "Mostrar información" as U3
+    usecase "Informar que no\nse encontró" as U4
+}
+actor "Recepcionista" as R
+Principal <-- R
+Principal ..> U1 : <<include>>
+Principal ..> U2 : <<include>>
+U3 ..> Principal : <<extend>>\n[Encontrada]
+U4 ..> Principal : <<extend>>\n[No encontrada]
+@enduml

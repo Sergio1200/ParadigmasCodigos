@@ -1,0 +1,19 @@
+@startuml Colaboracion
+' configuracion visual para cajas mas limpias
+skinparam roundcorner 0 
+skinparam shadowing false
+'definicon de objetos
+object Taquilla
+object Cliente 
+object Agenda 
+object Reserva 
+Taquilla -down-> Cliente : 1: solicitud\n[3b = ERROR] rechazado\n7: confirmacion
+Taquilla -down-> Agenda : 2: consultar\n[3a = OK] 4: reservar
+Agenda -up-> Taquilla : 3: disponible
+'conexiones de la parte inferior/lateral
+Agenda -right-> Reserva : 5: crear
+Reserva -up-> Taquilla : 6: confirmado
+note right of Taquilla
+Cordina interacciones 
+end note
+@enduml

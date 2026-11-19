@@ -1,0 +1,36 @@
+@startuml Clases
+
+class Huesped {
+    - nombre : String
+    - telefono : String
+    --
+    + registrarDatos() : void
+    + obtenerNombre() : String
+}
+
+class Habitacion {
+    - numero : int
+    - tipo : String
+    - precio : double
+    - estado : String
+    --
+    + consultarDisponibilidad() : boolean
+    + cambiarEstado() : void
+}
+
+class Reservacion {
+    - idReservacion : int
+    - fechaEntrada : Date
+    - fechaSalida : Date
+    - estado : String
+    --
+    + calcularCosto() : double
+    + confirmarReservacion() : void
+    + cancelarReservacion() : void
+}
+
+Huesped "1" --o "*" Reservacion : realiza
+
+Reservacion "*" --> "1" Habitacion : asigna
+
+@enduml

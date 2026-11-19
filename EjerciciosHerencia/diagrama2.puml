@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+class Vehiculo {
+  # modelo : String
+  # año : int
+  # velocidad : int
+  + Vehiculo(modelo: String, año: int, velocidad: int)
+  + acelerar(incremento: int) : void
+  + frenar(decremento: int) : void
+  + mostrarDetalles() : void
+}
+class Auto {
+  # puertas : int
+  + Auto(modelo: String, año: int, velocidad: int, puertas: int)
+  + mostrarDetalles() : void
+}
+class Moto {
+  # tieneSidecar : boolean
+  + Moto(modelo: String, año: int, velocidad: int, tieneSidecar: boolean)
+  + mostrarDetalles() : void
+}
+class Camion {
+  # capacidadCargaToneladas : double
+  + Camion(modelo: String, año: int, velocidad: int, capacidadCargaToneladas: double)
+  + mostrarDetalles() : void
+}
+class AutoDeportivo {
+  # caballosDeFuerza : int
+  + AutoDeportivo(modelo: String, año: int, velocidad: int, puertas: int, caballosDeFuerza: int)
+  + mostrarDetalles() : void
+}
+class Main {
+  + {static} main(args: String[]) : void
+}
+Vehiculo <|-- Auto
+Vehiculo <|-- Moto
+Vehiculo <|-- Camion
+Auto <|-- AutoDeportivo
+Main ..> Vehiculo : " crea y usa array"
+@enduml

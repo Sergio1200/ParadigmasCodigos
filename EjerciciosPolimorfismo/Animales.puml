@@ -1,0 +1,35 @@
+@startuml
+abstract class Animal {
+  # nombre: String
+  # energia: int
+  + Animal(nombre)
+  + {abstract} hacerSonido(): void
+  + moverse(): void
+  + dormir(): void
+  + comer(): void
+}
+class Perro {
+  - raza: String
+  + Perro(nombre, raza)
+  + hacerSonido(): void
+  + traerObjeto(): void
+  + moverse(): void
+}
+class Gato {
+  - color: String
+  + Gato(nombre, color)
+  + hacerSonido(): void
+  + rasgunar(): void
+  + moverse(): void
+}
+class Pajaro {
+  - envergaduraAlas: double
+  + Pajaro(nombre, envergadura)
+  + hacerSonido(): void
+  + volar(): void
+  + moverse(): void
+}
+Animal <|-- Perro
+Animal <|-- Gato
+Animal <|-- Pajaro
+@enduml

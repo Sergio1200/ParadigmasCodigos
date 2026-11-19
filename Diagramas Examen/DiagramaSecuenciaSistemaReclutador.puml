@@ -1,0 +1,27 @@
+@startuml
+title Escenario A - Postulación exitosa a una vacante
+
+actor "Aspirante" as Aspirante
+boundary "Interfaz de Usuario" as IU
+control "Controlador de Postulaciones" as CP
+database "Base de Datos" as BD
+participant "Servicio de Correo\nExterno " as Correo
+
+Aspirante -> IU : Seleccionar vacante
+Aspirante -> IU : Solicitar postulación
+
+IU -> CP : registrarPostulacion
+
+CP -> BD : verificarVacanteDisponible
+BD --> CP : Vacante disponible
+
+CP -> BD : guardarPostulacion()
+BD --> CP : Postulación registrada
+
+CP -> Correo : enviarNotificacion(estado)
+Correo --> CP : Confirmación de envío
+
+CP --> IU : Postulación exitosa
+IU --> Aspirante : Mostrar confirmación
+
+@enduml

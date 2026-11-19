@@ -1,0 +1,19 @@
+@startuml
+package "Pagos" {
+    class Pago {
+        - idPago : int
+        - fecha : Date
+        - monto : double
+        - metodoPago : String
+        - estado : String
+        --
+        + registrarPago() : void
+        + validarPago() : boolean
+    }
+}
+class Reservacion {
+    - idReservacion : int
+    - costoTotal : double
+}
+Reservacion "1" -- "0..*" Pago : tiene
+@enduml

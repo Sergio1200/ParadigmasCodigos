@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+rectangle "Administrar Habitaciones" {
+    usecase "Administrar habitaciones" as Principal
+    usecase "Registrar habitación" as U1
+    usecase "Modificar habitación" as U2
+    usecase "Consultar habitaciones" as U3
+    usecase "Cambiar estado" as U4
+}
+actor "Administrador" as A
+Principal <-- A
+U1 ..> Principal : <<extend>>
+U2 ..> Principal : <<extend>>
+U3 ..> Principal : <<extend>>
+U4 ..> Principal : <<extend>>
+@enduml
