@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "DAO - Menú de estudiantes",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "estudiantes-dao",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "args": ["--interactivo"]
+        }
+    ]
+}

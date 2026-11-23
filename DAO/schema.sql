@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS universidad_db
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+USE universidad_db;
+
+CREATE TABLE IF NOT EXISTS estudiantes (
+    id INT NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
